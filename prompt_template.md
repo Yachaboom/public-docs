@@ -9,18 +9,18 @@
 - **버전**: {{ version }}
 - **언어**: {{ language }}
 - **SDK 유형**: {{ sdk_type }}
-{%- if github_url %}
+{% if github_url %}
 - **GitHub URL**: {{ github_url }}
-{%- endif %}
-{%- if docs_url %}
+{% endif %}
+{% if docs_url %}
 - **문서 URL**: {{ docs_url }}
-{%- endif %}
+{% endif %}
 - **생성 날짜**: {{ current_date }}
 - **모델**: {{ model_variant }}
 
 ## 📖 문서 구조 요구사항
 
-{% if sdk_type == 'web-framework' -%}
+{% if sdk_type == 'web-framework' %}
 ### 웹 프레임워크용 구조
 ```markdown
 # {{ sdk_name }} {{ version }} 완전 SDK 참조
@@ -57,7 +57,7 @@
 ### 5.4 모니터링 및 로깅
 ### 5.5 문제 해결
 ```
-{%- elif sdk_type == 'database' or sdk_type == 'orm' -%}
+{% elif sdk_type == 'database' or sdk_type == 'orm' %}
 ### 데이터베이스/ORM용 구조
 ```markdown
 # {{ sdk_name }} {{ version }} 완전 참조
@@ -98,7 +98,7 @@
 ### 6.3 연결 풀 튜닝
 ### 6.4 프로파일링 및 모니터링
 ```
-{%- else -%}
+{% else %}
 ### API/라이브러리용 구조
 ```markdown
 # {{ sdk_name }} {{ version }} API 참조
@@ -132,7 +132,7 @@
 ### 5.3 테스팅 예제
 ### 5.4 배포 가이드
 ```
-{%- endif %}
+{% endif %}
 
 ## ✅ 품질 요구사항
 
@@ -153,21 +153,21 @@
 - **검색 최적화**: 키워드와 태그 적절히 사용
 - **컨텍스트 유지**: 관련 정보를 섹션별로 그룹화
 
-{%- if include_security_section %}
+{% if include_security_section %}
 
 ### 🔒 보안 고려사항
 - **인증/인가 패턴** 상세 설명
 - **보안 베스트 프랙티스** 포함
 - **취약점 방지 방법** 제시
-{%- endif %}
+{% endif %}
 
-{%- if include_performance_tips %}
+{% if include_performance_tips %}
 
 ### ⚡ 성능 최적화
 - **성능 모니터링** 방법
 - **병목점 해결** 전략
 - **확장성 고려사항** 포함
-{%- endif %}
+{% endif %}
 
 ## 🎨 출력 형식 지침
 
@@ -183,7 +183,7 @@
 9. **에러 처리 방법**
 
 ### {{ language }} 코드 예제 템플릿
-{% if language == 'Python' -%}
+{% if language == 'Python' %}
 ```python
 # 필요한 imports 모두 포함
 from {{ sdk_name | lower }} import [필요한_클래스들]
@@ -248,7 +248,7 @@ if __name__ == "__main__":
     import asyncio
     asyncio.run(main())
 ```
-{%- elif language == 'JavaScript' -%}
+{% elif language == 'JavaScript' %}
 ```javascript
 // 필요한 모든 imports
 const { [필요한_함수들] } = require('{{ sdk_name | lower }}');
@@ -287,7 +287,7 @@ async function example() {
   }
 }
 ```
-{%- elif language == 'TypeScript' -%}
+{% elif language == 'TypeScript' %}
 ```typescript
 // 필요한 모든 imports
 import { [필요한_것들] } from '[패키지명]';
@@ -332,7 +332,7 @@ async function example() {
   }
 }
 ```
-{%- else -%}
+{% else %}
 ```{{ language.lower() }}
 // {{ language }} 코드 예제
 // 필요한 imports와 에러 처리를 포함한 완전한 예제
@@ -353,7 +353,7 @@ async function example() {
 // 5. 사용 예제
 [실제_사용_예제]
 ```
-{%- endif %}
+{% endif %}
 
 ### 참조표 템플릿
 
